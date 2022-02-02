@@ -21,14 +21,8 @@ public class EstadoService {
     }
 
     public Estado buscar(Long id) {
-        Optional<Estado> estado = estadoRepository.findById(id);
-
-        if (estado.isEmpty()) {
-             throw new EntidadeNaoEncontradaException(
-                     String.format("Estado com id %d não encontrado", id)
-             );
-        }
-        return estadoRepository.findById(id).get();
+        return estadoRepository.findById(id)
+                .orElseThrow(() -> mensagemErro(id));
     }
 
     public Estado salva(Estado estado) {
@@ -56,5 +50,10 @@ public class EstadoService {
             );
         }
         estadoRepository.delete(estado.get());
+    }
+
+    private EntidadeNaoEncontradaException mensagemErro(Long id) {
+        return new EntidadeNaoEncontradaException(
+                String.format("Estado com id %d não encontrado", id));
     }
 }

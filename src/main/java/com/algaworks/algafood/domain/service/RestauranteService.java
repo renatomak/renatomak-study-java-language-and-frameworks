@@ -4,7 +4,7 @@ import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Cozinha;
 import com.algaworks.algafood.domain.model.Restaurante;
 import com.algaworks.algafood.domain.repository.CozinhaRepository;
-import com.algaworks.algafood.infrastructure.repository.RestauranteRepositoryImpl;
+import com.algaworks.algafood.domain.repository.RestauranteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class RestauranteService {
 
     @Autowired
-    private RestauranteRepositoryImpl restauranteRepository;
+    private RestauranteRepository restauranteRepository;
 
     @Autowired
     private CozinhaRepository cozinhaRepository;
@@ -26,12 +26,12 @@ public class RestauranteService {
                         String.format("Não existe cadastro de cozinha com código %d", cozinhaId)));
 
         restaurante.setCozinha(cozinha);
-        return restauranteRepository.salvar(restaurante);
+        return restauranteRepository.save(restaurante);
     }
 
     public void remover(Restaurante restaurante) {
         try {
-            restauranteRepository.remover(restaurante);
+            restauranteRepository.delete(restaurante);
         } catch (EmptyResultDataAccessException e) {
             throw new EntidadeNaoEncontradaException(
                     String.format("Não existe um cadastro de restaurante com código %d", restaurante.getId()));
