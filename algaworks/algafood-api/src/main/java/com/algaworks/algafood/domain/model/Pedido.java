@@ -1,18 +1,16 @@
 package com.algaworks.algafood.domain.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
+
+
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
-@Data
 @Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Usuario {
+public class Pedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,23 +18,25 @@ public class Usuario {
     private Long id;
 
     @Column(nullable = false)
-    private String nome;
+    private BigDecimal subtotal;
 
     @Column(nullable = false)
-    private String email;
+    private BigDecimal valorTotal;
 
     @Column(nullable = false)
-    private String senha;
+    private LocalDateTime dataCriacao;
 
     @Column(nullable = false)
-    private LocalDateTime dataCadastro;
+    private LocalDateTime dataConfirmacao;
 
-    @JsonIgnore
+    @Column(nullable = false)
+    private LocalDateTime dataCancelamento;
+
+    @Column(nullable = false)
+    private LocalDateTime dataEntrega;
+
     @ManyToOne
-    @JoinColumn(name = "grupo_id")
-    private Grupo grupo;
-
-    @OneToMany
-    private List<Pedido> pedidos = new ArrayList<>();
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuario;
 
 }
