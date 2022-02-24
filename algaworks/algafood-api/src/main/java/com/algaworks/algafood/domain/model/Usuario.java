@@ -1,35 +1,37 @@
 package com.algaworks.algafood.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Data
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class Produto {
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+public class Usuario {
 
-    @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Long id;
 
     @Column(nullable = false)
     private String nome;
 
     @Column(nullable = false)
-    private String descricao;
+    private String email;
 
     @Column(nullable = false)
-    private BigDecimal preco;
+    private String senha;
 
     @Column(nullable = false)
-    private Boolean ativo;
+    private LocalDateTime dataCadastro;
 
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(nullable = false)
-    private Restaurante restaurante;
+    @JoinColumn(name = "grupo_id")
+    private Grupo grupo;
 
 }
