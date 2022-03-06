@@ -6,12 +6,12 @@ import lombok.EqualsAndHashCode;
 import javax.persistence.*;
 
 @Data
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Entity
 @Table(name = "sales")
 public class Sale {
 
     @EmbeddedId
-    private ProductOrder id = new ProductOrder();
+    private SalePK id = new SalePK();
 
     private Integer quantity;
 
