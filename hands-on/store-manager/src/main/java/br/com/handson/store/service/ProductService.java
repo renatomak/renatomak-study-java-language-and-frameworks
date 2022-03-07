@@ -1,12 +1,16 @@
 package br.com.handson.store.service;
 
 import br.com.handson.store.dto.ProductDto;
+import br.com.handson.store.mapper.ProductMapper;
 import br.com.handson.store.model.Product;
 import br.com.handson.store.repository.ProductRepository;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @Service
@@ -22,6 +26,12 @@ public class ProductService {
         productDto.setId(id);
 
         return productDto;
+    }
+
+    public List<ProductDto> getAll() {
+        return productRepository.findAll()
+                .stream().map(ProductMapper::toDto)
+                .collect(Collectors.toList());
     }
 
     public Product convertToModel(ProductDto productsDto) {
