@@ -2,9 +2,10 @@ package br.com.handson.store.mapper;
 
 import br.com.handson.store.dto.ProductDto;
 import br.com.handson.store.model.Product;
+import org.springframework.stereotype.Component;
 
-import java.util.List;
 
+@Component
 public class ProductMapper {
 
     public static ProductDto toDto(Product entity) {
@@ -15,7 +16,7 @@ public class ProductMapper {
         return dto;
     }
 
-    public Product toEntity(ProductDto dto) {
+    public static Product toEntity(ProductDto dto) {
         Product entity = new Product();
         entity.setId(dto.getId());
         entity.setName(dto.getName());

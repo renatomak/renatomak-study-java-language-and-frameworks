@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 public class ProductDto {
 
     @EqualsAndHashCode.Include
-    private Integer id;
+    private Long id;
 
     @NotNull(message = "The 'name' field is mandatory.")
     @NotEmpty(message = "O campo 'name' não pode ser vazio")
@@ -25,7 +25,7 @@ public class ProductDto {
     @NotNull(message = "The 'quantity' field is mandatory.")
     private Integer quantity;
 
-    public ProductDto setId(Integer id) {
+    public ProductDto setId(Long id) {
         this.id = id;
         return this;
     }
