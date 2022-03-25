@@ -71,7 +71,8 @@ public class Restaurante {
 	@OneToMany(mappedBy = "restaurante")
 	private List<Produto> produtos = new ArrayList<>();
 
-	@JsonIgnore
-	@OneToMany(mappedBy = "restaurante")
-	private  List<Pedido> pedidos = new ArrayList<>();
+	@ManyToMany
+	@JoinTable(name = "restaurante_usuario", joinColumns = @JoinColumn(name = "restaurante_id"),
+	inverseJoinColumns = @JoinColumn(name = "usuario_id"))
+	private List<Usuario> usuarios = new ArrayList<>();
 }
