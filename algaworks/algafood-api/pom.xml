@@ -51,6 +51,17 @@
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.ibm.icu</groupId>
+			<artifactId>icu4j</artifactId>
+			<version>58.1</version>
+		</dependency>
+		<dependency>
+			<groupId>de.gsi.math</groupId>
+			<artifactId>chartfx-math</artifactId>
+			<version>11.2.5</version>
+			<scope>compile</scope>
+		</dependency>
 	</dependencies>
 
 	<build>

@@ -75,5 +75,4 @@ public class Restaurante {
 	@JoinTable(name = "restaurante_usuario", joinColumns = @JoinColumn(name = "restaurante_id"),
 	inverseJoinColumns = @JoinColumn(name = "usuario_id"))
 	private List<Usuario> usuarios = new ArrayList<>();
-
 }
