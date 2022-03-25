@@ -58,7 +58,6 @@ public class ProductService {
         } catch (DataIntegrityViolationException e) {
             throw new EntityInUseException(String.format("Produto com o códido %d não pode ser removido, pois está em uso", id));
         }
-
     }
 
 }

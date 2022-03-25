@@ -11,6 +11,7 @@ import javax.persistence.Table;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "products")
 public class Product {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
@@ -21,4 +22,5 @@ public class Product {
 
     @Column(nullable = false)
     private Integer quantity = 0;
+
 }
