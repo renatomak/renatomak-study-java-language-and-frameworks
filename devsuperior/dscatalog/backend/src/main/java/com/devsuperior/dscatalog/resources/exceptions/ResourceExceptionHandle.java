@@ -1,7 +1,7 @@
 package com.devsuperior.dscatalog.resources.exceptions;
 
-import com.devsuperior.dscatalog.service.exceptions.DataBasesException;
-import com.devsuperior.dscatalog.service.exceptions.ResourceNotFoundException;
+import com.devsuperior.dscatalog.services.exceptions.DataBasesException;
+import com.devsuperior.dscatalog.services.exceptions.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

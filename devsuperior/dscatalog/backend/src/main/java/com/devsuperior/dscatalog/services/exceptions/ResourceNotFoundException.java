@@ -1,4 +1,4 @@
-package com.devsuperior.dscatalog.service.exceptions;
+package com.devsuperior.dscatalog.services.exceptions;
 
 public class ResourceNotFoundException extends RuntimeException {
     private static final long serialVersionUID = 2062434147875331065L;
