@@ -1,5 +1,6 @@
 package com.devsuperior.dscatalog.tests;
 
+import com.devsuperior.dscatalog.dto.CategoryDto;
 import com.devsuperior.dscatalog.dto.ProductDto;
 import com.devsuperior.dscatalog.entities.Category;
 import com.devsuperior.dscatalog.entities.Product;
@@ -22,5 +23,9 @@ public class Factory {
 
     public static Category createCategory() {
         return new Category(1L, "Electronics");
+    }
+
+    public static CategoryDto createCategoryDto() {
+        return new CategoryDto(1L, "Electronics");
     }
 }
