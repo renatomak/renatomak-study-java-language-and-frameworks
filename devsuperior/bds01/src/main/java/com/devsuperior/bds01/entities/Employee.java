@@ -32,7 +32,14 @@ public class Employee {
 		this.department = department;
 	}
 
-	public Long getId() {
+    public Employee(Employee employee) {
+		this.id = employee.getId();
+		this.name = employee.getName();
+		this.email = employee.getEmail();
+		this.department = employee.getDepartment();
+    }
+
+    public Long getId() {
 		return id;
 	}
 
