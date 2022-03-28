@@ -1,10 +1,10 @@
-package com.devsuperior.dscatalog.service;
+package com.devsuperior.dscatalog.services;
 
 import com.devsuperior.dscatalog.dto.CategoryDto;
 import com.devsuperior.dscatalog.entities.Category;
 import com.devsuperior.dscatalog.repositories.CategoryRepository;
-import com.devsuperior.dscatalog.service.exceptions.DataBasesException;
-import com.devsuperior.dscatalog.service.exceptions.ResourceNotFoundException;
+import com.devsuperior.dscatalog.services.exceptions.DataBasesException;
+import com.devsuperior.dscatalog.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
