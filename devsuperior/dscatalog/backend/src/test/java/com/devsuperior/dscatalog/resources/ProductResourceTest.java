@@ -115,7 +115,7 @@ class ProductResourceTest {
     @Test
     public void findAllShouldReturnPage() throws Exception {
 
-        ResultActions result = mockMvc.perform(get("/products", existingId)
+        ResultActions result = mockMvc.perform(get("/products")
                 .accept(MediaType.APPLICATION_JSON));
 
         result.andExpect(status().isOk());
