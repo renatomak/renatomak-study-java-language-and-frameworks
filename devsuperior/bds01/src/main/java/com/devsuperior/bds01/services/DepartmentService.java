@@ -4,6 +4,7 @@ import com.devsuperior.bds01.dto.DepartmentDTO;
 import com.devsuperior.bds01.entities.Department;
 import com.devsuperior.bds01.repositories.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -18,8 +19,8 @@ public class DepartmentService {
     private DepartmentRepository departmentRepository;
 
     public List<DepartmentDTO> findAll() {
-        List<Department> departments = departmentRepository.findAll();
-        departments.sort((a, b) -> a.getName().compareTo(b.getName()));
+        List<Department> departments = departmentRepository.findAll(Sort.by("name"));
+        // departments.sort((a, b) -> a.getName().compareTo(b.getName()));
         return departments.stream().map(DepartmentDTO::new).collect(Collectors.toList());
     }
 }
