@@ -3,6 +3,7 @@ package com.algaworks.algafood.api.controller;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Cidade;
 import com.algaworks.algafood.domain.service.CidadeService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -24,12 +25,8 @@ public class CidadeController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> buscar(@PathVariable Long id) {
-        try {
-            return ResponseEntity.ok(cidadeService.buscar(id));
-        } catch (EntidadeNaoEncontradaException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+    public Cidade buscar(@PathVariable Long id) {
+        return cidadeService.buscarOuFalhar(id);
     }
 
     @PostMapping
@@ -43,22 +40,15 @@ public class CidadeController {
 
     // TODO: Verificar porque não consigo retornar o nome do estado depois de atualizado.
     @PutMapping("/{id}")
-    public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody Cidade cidade) {
-        try {
-            return ResponseEntity.ok(cidadeService.atualizar(id, cidade));
-        } catch (EntidadeNaoEncontradaException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+    public Cidade atualizar(@PathVariable Long id, @RequestBody Cidade cidade) {
+        Cidade cidadeAtual = cidadeService.buscarOuFalhar(id);
+        BeanUtils.copyProperties(cidade, cidadeAtual, "id");
+        return cidadeService.salvar(cidadeAtual);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> excluir(@PathVariable Long id) {
-        try {
-            cidadeService.excluir(id);
-            return ResponseEntity.ok(String.format("Cidade com código %d removida com sucesso!", id));
-        } catch (EmptyResultDataAccessException | DataIntegrityViolationException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+    public void remover(@PathVariable Long id) {
+        cidadeService.remover(id);
     }
 
 }
