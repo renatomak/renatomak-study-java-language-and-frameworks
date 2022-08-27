@@ -26,7 +26,7 @@ import java.util.Optional;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
-class CategoryServiceTest {
+class          CategoryServiceTest {
 
     @InjectMocks
     private CategoryService categoryService;
