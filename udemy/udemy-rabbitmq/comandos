@@ -1,0 +1,4 @@
+docker exec -it api_rabbitmq_1 bash
+docker run -d -p 15672:15672 -p 5672:5672 --name rabbitmq rabbitmq:3-management
+
+rabbitmq-plugins enable rabbitmq_shovel rabbitmq_shovel_management
